@@ -1,0 +1,68 @@
+﻿@*@model IEnumerable<EFStudentSystem.Models.Announcement>*@
+@model PagedList.IPagedList<EFStudentSystem.Models.Announcement>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Announcements";
+}
+
+<h2>Announcements</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th class="col-md-2">
+            Subject
+        </th>
+        <th class="col-md-6">
+            Short Description
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>*@
+        <th>
+            Author
+        </th>
+        <th>
+            @Html.ActionLink("Post Date", "index", new { sortOrder = ViewBag.DateSortParm })
+            
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td class="col-md-2">
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td class="col-md-6">
+            @Html.DisplayFor(modelItem => item.ShortDescription)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Instructor.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostedOn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<br />
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { sortOrder = ViewBag.CurrentSort, page}))

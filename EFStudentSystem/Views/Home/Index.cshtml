@@ -1,0 +1,27 @@
+﻿@model IEnumerable<EFStudentSystem.Models.Announcement>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Worcester Polytechnic Institute</h1>
+    <p class="lead">Student Information System</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
+            <p>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </p>
+            @*<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+            <p class="">@Html.ActionLink("Details", "Details", "Announcement", new { id = item.ID }, new { @class = "btn btn-default" })</p>
+
+        </div>
+    }
+</div>

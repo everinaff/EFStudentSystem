@@ -1,0 +1,59 @@
+﻿@model EFStudentSystem.Models.Announcement
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Announcement</h4>
+    <hr />
+    <dl >
+        <dt>
+            @Html.DisplayNameFor(model => model.Instructor.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instructor.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt><br /></dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostedOn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
